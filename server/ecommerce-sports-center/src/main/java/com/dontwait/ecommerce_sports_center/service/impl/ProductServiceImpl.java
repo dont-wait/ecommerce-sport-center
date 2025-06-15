@@ -1,6 +1,9 @@
 package com.dontwait.ecommerce_sports_center.service.impl;
 
 import com.dontwait.ecommerce_sports_center.dto.response.ProductResponse;
+import com.dontwait.ecommerce_sports_center.entity.Product;
+import com.dontwait.ecommerce_sports_center.enums.ErrorCode;
+import com.dontwait.ecommerce_sports_center.exception.AppException;
 import com.dontwait.ecommerce_sports_center.mapper.ProductMapper;
 import com.dontwait.ecommerce_sports_center.repository.ProductRepository;
 import com.dontwait.ecommerce_sports_center.service.ProductService;
@@ -21,11 +24,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getProducts() {
-        return List.of();
+        return productRepository.findAll()
+                .stream()
+                .map(productMapper::toProductResponse)
+                .toList();
     }
 
     @Override
     public ProductResponse findById(Integer id) {
-        return null;
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_ID_NOTFOUND));
+        return productMapper.toProductResponse(product);
     }
 }

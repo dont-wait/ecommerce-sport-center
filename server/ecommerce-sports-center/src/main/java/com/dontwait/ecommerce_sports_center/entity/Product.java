@@ -18,7 +18,8 @@ public class Product {
     Integer id;
     @Column(name = "Name")
     String name;
-    @Column(name="Description")
+
+    @Column(name="Description", columnDefinition = "TEXT")
     String description;
     @Column(name="Price")
     Long price;

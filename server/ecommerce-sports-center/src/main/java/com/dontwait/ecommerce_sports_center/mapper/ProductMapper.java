@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
-
     //pass brand.name to productBrand
     @Mapping(source = "brand.name", target = "productBrand")
     @Mapping(source = "type.name", target = "productType")

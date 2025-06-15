@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 public enum ErrorCode {
 
     UNCATEGORIZED_EXCEPTION(6789, "Uncategorized error", HttpStatus.INTERNAL_SERVER_ERROR),
-    INVALID_KEY(1001, "Uncategorized error", HttpStatus.BAD_REQUEST) //sai thuoc tinh,
+    INVALID_KEY(1001, "Uncategorized error", HttpStatus.BAD_REQUEST), //sai thuoc tinh,
+    PRODUCT_ID_NOTFOUND(1002, "Product id not found", HttpStatus.NOT_FOUND),
     ;
 
     Integer code;
