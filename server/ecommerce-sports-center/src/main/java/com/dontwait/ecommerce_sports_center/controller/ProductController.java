@@ -38,9 +38,9 @@ public class ProductController {
                 .equalsIgnoreCase("desc") ?
                                             Sort.Direction.DESC :
                                             Sort.Direction.ASC;
-        Sort sorting = Sort.by(direction, request.getSort());
+        //Sort sorting = Sort.by(direction, request.getSort());
 
-        Pageable pageable = PageRequest.of(page, size, sorting);
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, request.getSort()));
 
         return ApiResponse.<List<ProductResponse>>builder()
                 .result(productService.getProducts(pageable, request))
