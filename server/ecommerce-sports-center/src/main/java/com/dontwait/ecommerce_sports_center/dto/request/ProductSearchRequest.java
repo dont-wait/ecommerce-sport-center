@@ -15,5 +15,5 @@ public class ProductSearchRequest {
     Integer brandId;
     Integer typeId;
     String sort = "name";
-    String order;
+    String order = "desc";
 }

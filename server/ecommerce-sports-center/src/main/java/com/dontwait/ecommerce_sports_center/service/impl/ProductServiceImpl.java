@@ -26,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getProducts(Pageable pageable, ProductSearchRequest request) {
+
         return productRepository.findAll()
                 .stream()
                 .map(productMapper::toProductResponse)
