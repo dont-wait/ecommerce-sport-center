@@ -1,5 +1,6 @@
 package com.dontwait.ecommerce_sports_center.service.impl;
 
+import com.dontwait.ecommerce_sports_center.dto.request.ProductSearchRequest;
 import com.dontwait.ecommerce_sports_center.dto.response.ProductResponse;
 import com.dontwait.ecommerce_sports_center.entity.Product;
 import com.dontwait.ecommerce_sports_center.enums.ErrorCode;
@@ -10,6 +11,7 @@ import com.dontwait.ecommerce_sports_center.service.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Override
-    public List<ProductResponse> getProducts() {
+    public List<ProductResponse> getProducts(Pageable pageable, ProductSearchRequest request) {
         return productRepository.findAll()
                 .stream()
                 .map(productMapper::toProductResponse)

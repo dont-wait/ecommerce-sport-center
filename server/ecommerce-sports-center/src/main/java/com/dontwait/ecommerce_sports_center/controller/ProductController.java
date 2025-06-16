@@ -1,5 +1,6 @@
 package com.dontwait.ecommerce_sports_center.controller;
 
+import com.dontwait.ecommerce_sports_center.dto.request.ProductSearchRequest;
 import com.dontwait.ecommerce_sports_center.dto.response.ApiResponse;
 import com.dontwait.ecommerce_sports_center.dto.response.BrandResponse;
 import com.dontwait.ecommerce_sports_center.dto.response.ProductResponse;
@@ -25,9 +26,14 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping
-    ApiResponse<List<ProductResponse>> getProducts() {
+    ApiResponse<List<ProductResponse>> getProducts(
+            @RequestParam(name = "page", defaultValue = "0" ) int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestBody ProductSearchRequest request) {
+
+
         return ApiResponse.<List<ProductResponse>>builder()
-                .result(productService.getProducts())
+                .result()
                 .message("success to get products")
                 .build();
     }
