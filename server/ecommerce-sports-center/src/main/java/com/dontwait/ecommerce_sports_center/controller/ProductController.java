@@ -32,7 +32,7 @@ public class ProductController {
     ApiResponse<List<ProductResponse>> getProducts(
             @RequestParam(name = "page", defaultValue = "0" ) int page,
             @RequestParam(name = "size", defaultValue = "10") int size,
-            @RequestBody ProductSearchRequest request) {
+            @RequestBody(required = false) ProductSearchRequest request) {
 
         Sort.Direction direction = request.getOrder()
                 .equalsIgnoreCase("desc") ?
