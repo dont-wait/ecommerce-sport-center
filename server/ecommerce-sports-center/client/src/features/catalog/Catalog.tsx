@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import { apiClient } from "./api/axios";
-import { useToast } from "./hooks/useToast"
+import { useState, useEffect } from "react";
+import { apiClient } from "../../api/axios";
+import type { Product } from "../../app/models/Product";
+import { useToast } from "../../hooks/useToast";
 
-const App = () => {
+export default function Catalog() {
     const { showToast } = useToast();
     //Define a state variable products, using useState
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
     
     useEffect(() => {
         const fetchProducts = async () => {
@@ -24,7 +25,6 @@ const App = () => {
 
     return (
         <div>
-            <h1>Product List</h1>
             {
                 products.map((product) => (
                     <div key={product.id} className="product">
@@ -38,4 +38,3 @@ const App = () => {
         </div>
     );
 }
-export default App;
