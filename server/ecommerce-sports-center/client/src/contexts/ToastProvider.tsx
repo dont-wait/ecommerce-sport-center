@@ -1,6 +1,6 @@
 // ToastContext.tsx
 import { createContext, type ReactNode } from "react";
-import { ToastContainer, toast, type ToastOptions } from "react-toastify";
+import { ToastContainer, toast,  type ToastOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ToastContextType {
